@@ -25,14 +25,13 @@ using namespace Midi;
 
 int main() {
     freopen("score.txt", "w", stdout);
-    MidiFile midi("Fantaisie.mid");
+    MidiFile midi("YouFileName.mid");
     midi.load();
     cout << "tick time(us): " << midi.midiTrack[0].crotchets_real_time / midi.tick_time << std::endl;
     int idx = 0;
-    double rate = 1.5;
     for(auto [pitch, time] : midi.midiTrack[0].tracks[0]) {
-        printf("assign score_dur[%d] = 16\'d%d;\n", idx, int(time));
-        printf("assign score_fre[%d] = 8\'d%d;\n", idx, pitch);
+        printf("score_dur[%d] = %d;\n", idx, time);
+        printf("score_fre[%d] = %d;\n", idx, pitch);
         idx++;
     }
 }
